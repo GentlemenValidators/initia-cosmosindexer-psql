@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: initia_db
+      POSTGRES_USER: initia_user
+      POSTGRES_PASSWORD: initia_password
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - initia_network
+
+  app:
+    build: .
+    environment:
+      - DB_NAME=initia_db
+      - DB_USER=initia_user
+      - DB_PASSWORD=initia_password
+      - DB_HOST=db
+      - DB_PORT=5432
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+    networks:
+      - initia_network
+
+networks:
+  initia_network:
+
+volumes:
+  db_data:
