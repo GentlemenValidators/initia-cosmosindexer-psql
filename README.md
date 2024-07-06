@@ -91,3 +91,4 @@ Notes
 
     Scripts Usage:
     Each script in the project is designed to perform a specific task related to blockchain data processing. You can run these scripts individually or coordinate them using the main.py script.
+Original by [Github](https://github.com/Reecepbcups/interchain-indexer)
